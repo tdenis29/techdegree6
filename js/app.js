@@ -1,7 +1,7 @@
 // Global Variables 
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
-const startButton = document.getElementById('btn-reset');   //reset/start the game 
+const startButton = document.querySelector("a");   //reset/start the game 
 let score = 0;                                                //score
 
 const phraseArr = [ 
@@ -14,8 +14,8 @@ const phraseArr = [
 
 //return random phrase from array 
 const getRandomPhraseArray = arr => {
-
-
+let randomKey = Math.floor(Math.random() * 5 + 1);                                
+console.log(randomKey);
 }
 
 
@@ -37,8 +37,9 @@ const checkWin = () => {
 }
 
 //listen for start button to fire 
-startButton.addEventListener("click", (e) => {
-
+startButton.addEventListener("click", () => {                                //activate 
+const overlay = document.getElementById('overlay');                          //grab overlay
+overlay.style.display = "none"                                               // hide on click
 
 });
 
