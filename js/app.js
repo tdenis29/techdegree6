@@ -9,6 +9,6 @@ const phraseArr = [
     "These are not the droids youre looking for",
     "Lannisters always pay their debts",
     "One Ring to rule them all",
-    "Would it save you a lot of time if I just gave up and went mad now?"
+    "buy the ticket take the ride"
 ]
 
