@@ -1,7 +1,7 @@
 // Global Variables 
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
-const startButton = document.querySelector("a");           //reset/start the game 
+const startButton = document.querySelector("a");          //reset/start the game 
 let score = 0;                                                //score
 
 const phraseArr = [ 
@@ -14,13 +14,20 @@ const phraseArr = [
 
 //return random phrase from array 
 const getRandomPhraseArray = arr => {
-
-}
+let randomKey = Math.floor(Math.random() * 5 + 1);
+let randomPhrase = phraseArr[randomKey];
+return randomPhrase                               
+};
 
 
 
 //add the letters of a string to the display
 const addPhraseToDisplay = arr => {
+    for (let i = 0; i < arr.length; i++){
+        let letterBox = document.createElement('li');
+        letterBox.value = randomPhrase.textContent;
+        console.log()
+    }
 
 
 }
