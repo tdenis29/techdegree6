@@ -24,7 +24,7 @@ const getRandomPhraseArray = phraseArr => {
     letters = [...randomPhrase]            //turn phrase into array of characters
     return letters;                  
 };
-;
+
 
 // add the letters of a string to the display step 3
 function addPhraseToDisplay(letters) {                     
@@ -43,58 +43,43 @@ function addPhraseToDisplay(letters) {
 }
 
 // listen for keyboard clicks and compare input to li step 4
+// qwerty.addEventListener('click', (button) => {
+//     checkMatch = document.querySelectorAll(".letter");
+//     let match;
+//     for (let i = 0; i < checkMatch.length; i++) {
+//         if (button.target.textContent.toLowerCase() === checkMatch.textContent.toLowerCase()) {
+//             checkMatch[i].className = "show";
+//             match += button.textContent;
+//             return match;
+//         } else {
+//             score--;
+//         } 
+//     }
+// });
+
+// listen for keyboard clicks and compare input to li step 5
 qwerty.addEventListener('click', (button) => {
+    button.target.className = "chosen";
     checkMatch = document.querySelectorAll(".letter");
     let match;
     for (let i = 0; i < checkMatch.length; i++) {
         if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
             checkMatch[i].className = "show";
-            match += button.textContent;
-            return match;
+            match += button.textContent; 
         } else {
             score--;
         }
-    }
+    } return match 
 });
 
 //check if game has been won or lost step 6
 const checkWin = () => {
-letterGuessed = letterBox.className = "show";
 let header = document.getElementById("header");
-if (letterGuessed.length === letterBox.length) {
+if (letterGuessed.length === letterBox.lenght) {
  overlay.className = "win";
  header.innerHTML = "YOU WON";
  overlay.style.display = "flex";
-}  else if ( score === 0) {
-    overlay.className = "lose"
-    header.innerHTML = "YOU LOSE HAHA"
-    overlay.style.display = "flex";
-}
-}
-// listen for keyboard clicks and compare input to li step 5
-qwerty.addEventListener('click', (button) => {
-    checkMatch = document.querySelectorAll(".letter");
-    let match;
-    for (let i = 0; i < checkMatch.length; i++) {
-        if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
-            checkMatch[i].className = "show";
-            match += button.textContent;
-            return match;
-        } else {
-            score--;
-        } 
-    }
-});
-
-//check if game has been won or lost step 6
-const checkWin = () => {
-letterGuessed = letterBox.className = "show";
-let header = document.getElementById("header");
-if (letterGuessed.length === letterBox.length) {
- overlay.className = "win";
- header.innerHTML = "YOU WON";
- overlay.style.display = "flex";
-}  else if ( score === 0) {
+}  else if ( score = 0) {
     overlay.className = "lose"
     header.innerHTML = "YOU LOSE HAHA"
     overlay.style.display = "flex";
@@ -102,5 +87,4 @@ if (letterGuessed.length === letterBox.length) {
 }
 
 getRandomPhraseArray(phraseArr);
-addPhraseToDisplay(letters);
-
+addPhraseToDisplay(letters)
