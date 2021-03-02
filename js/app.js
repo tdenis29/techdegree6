@@ -14,19 +14,19 @@ const phraseArr = [
 
 //return random phrase from array 
 const getRandomPhraseArray = arr => {
-let randomKey = Math.floor(Math.random() * 5 + 1);
-let randomPhrase = phraseArr[randomKey];
-return randomPhrase                               
+    let randomKey = Math.floor(Math.random() * arr.length);
+    randomPhrase = phraseArr[randomKey];   
+    return randomPhrase                        
 };
 
 
 
 //add the letters of a string to the display
-const addPhraseToDisplay = arr => {
-    for (let i = 0; i < arr.length; i++){
+function addPhraseToDisplay(arr) {
+    for (let i = 0; i < arr.length; i++) {
         let letterBox = document.createElement('li');
         letterBox.value = randomPhrase.textContent;
-        console.log()
+
     }
 
 
