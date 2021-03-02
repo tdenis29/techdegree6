@@ -2,7 +2,7 @@
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
 const startButton = document.querySelector("a");          //reset/start the game 
-let score = 0;                                                //score
+let score = 5;                                                //score
 
 const phraseArr = [ 
     "Ba Ram You",
@@ -11,45 +11,82 @@ const phraseArr = [
     "One Ring to rule them all",
     "buy the ticket take the ride"
 ]
+//listen for start button to fire step 1
+startButton.addEventListener("click", () => {                                //activate 
+    overlay = document.getElementById('overlay');                          //grab overlay
+    overlay.style.display = "none"                                               // hide on click
+    });
 
-//return random phrase from array 
-const getRandomPhraseArray = arr => {
-    let randomKey = Math.floor(Math.random() * arr.length);
-    randomPhrase = phraseArr[randomKey];   
-    return randomPhrase                        
+//return random phrase from array step 2
+const getRandomPhraseArray = phraseArr => {
+    randomKey = Math.floor(Math.random() * 5);//random number between 1-5
+    randomPhrase = phraseArr[randomKey];   //selects phrase from array using key
+    letters = [...randomPhrase]            //turn phrase into array of characters
+    return letters;                  
 };
 
 
-
-//add the letters of a string to the display
-function addPhraseToDisplay(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let letterBox = document.createElement('li');
-        letterBox.value = randomPhrase.textContent;
-
+// add the letters of a string to the display step 3
+function addPhraseToDisplay(letters) {                     
+    for (let i = 0; i < letters.length; i++) {   
+       let ul = document.getElementById("phrase")              //loop through array
+       letterBox = document.createElement('li');
+       letterBoxText = document.createTextNode(letters[i]);
+       letterBox.appendChild(letterBoxText);
+       ul.appendChild(letterBox);
+        if (letters[i] === " ") {
+          letterBox.className = "space"
+        } else {
+            letterBox.className = "letter"
+        }
     }
-
-
 }
 
-//check if selected letter is in phrase
-const checkLetter = button => {
-
-}
-
-//check if game has been won or lost 
-const checkWin = () => {
-
-}
-
-//listen for start button to fire 
-startButton.addEventListener("click", () => {                                //activate 
-const overlay = document.getElementById('overlay');                          //grab overlay
-overlay.style.display = "none"                                               // hide on click
-
+// listen for keyboard clicks and compare input to li step 4
+qwerty.addEventListener('click', (button) => {
+    checkMatch = document.querySelectorAll(".letter");
+    let match;
+    for (let i = 0; i < checkMatch.length; i++) {
+        if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
+            checkMatch[i].className = "show";
+            match += button.textContent;
+            return match;
+        } else {
+            score--;
+        }
+    }
 });
 
-// listen for keyboard clicks
-qwerty.addEventListener('click', (e) => {
 
+//check if game has been won or lost step 6
+const checkWin = () => {
+letterGuessed = letterBox.className = "show";
+let header = document.getElementById("header");
+if (letterGuessed.length === letterBox.lenght) {
+ overlay.className = "win";
+ header.innerHTML = "YOU WON";
+ overlay.style.display = "flex";
+ 
+}  else if ( score = 0) {
+    overlay.className = "lose"
+    header.innerHTML = "YOU LOSE HAHA"
+    overlay.style.display = "flex";
+}
+}
+
+
+
+// listen for keyboard clicks and compare input to li step 5
+qwerty.addEventListener('click', (button) => {
+    checkMatch = document.querySelectorAll(".letter");
+    let match;
+    for (let i = 0; i < checkMatch.length; i++) {
+        if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
+            checkMatch[i].className = "show";
+            match += button.textContent;
+            return match;
+        } else {
+            score--;
+        }
+    }
 });
