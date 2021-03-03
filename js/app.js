@@ -2,14 +2,14 @@
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
 const startButton = document.querySelector("a");          //reset/start the game 
-let score = 5;                                                //score
+let score = 0;                                                //score
 
 const phraseArr = [ 
     "Ba Ram You",
     "These are not the droids youre looking for",
     "Lannisters always pay their debts",
     "One Ring to rule them all",
-    "buy the ticket take the ride"
+    "Buy the ticket take the ride"
 ]
 //listen for start button to fire step 1
 startButton.addEventListener("click", () => {                                //activate 
@@ -29,7 +29,7 @@ const getRandomPhraseArray = phraseArr => {
 // add the letters of a string to the display step 3
 function addPhraseToDisplay(letters) {                     
     for (let i = 0; i < letters.length; i++) {   
-       let ul = document.getElementById("phrase")              //loop through array
+       let ul = document.getElementById("letterboxes")              //loop through array
        letterBox = document.createElement('li');
        letterBoxText = document.createTextNode(letters[i]);
        letterBox.appendChild(letterBoxText);
@@ -64,10 +64,10 @@ qwerty.addEventListener('click', (button) => {
     let match;
     for (let i = 0; i < checkMatch.length; i++) {
         if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
-            checkMatch[i].className = "show";
+            checkMatch[i].classList.add("show");
             match += button.textContent; 
         } else {
-            score--;
+            score += 1;
         }
     } return match 
 });
@@ -75,7 +75,7 @@ qwerty.addEventListener('click', (button) => {
 //check if game has been won or lost step 6
 const checkWin = () => {
 let header = document.getElementById("header");
-if (letterGuessed.length === letterBox.lenght) {
+if (letterGuessed.length === letterBox.length) {
  overlay.className = "win";
  header.innerHTML = "YOU WON";
  overlay.style.display = "flex";
