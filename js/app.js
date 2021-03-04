@@ -67,14 +67,15 @@ function addPhraseToDisplay(letters) {
 //     buttonClicked.className = "chosen";
 //   }});
 
-// i need help with the function parameters for checkLetter! it works when i wrote checkLetter in the event handler 
+// i need help with the function parameters for checkLetter! it works when i wrote checkLetter in the event handler... 
 //This is my original code that kinda works im stuck on the conditional to filter out clicks anywhere else on the keyboard
-// im tryiing classList contains so only buttons with .letter can be clicked but i feel like theres a something somthing === "BUTTON"
+// im tryiing classList contains so only buttons with .letter can be clicked 
+//but i feel like theres a something somthing === "BUTTON"
 qwerty.addEventListener('click', (button) => {
     // if (button.target.classList.contains(".letter")){
     button.target.className = "chosen";
     checkMatch = document.querySelectorAll(".letter");
-    match = null;
+    letterFound = null;
     for (let i = 0; i < checkMatch.length; i++) {
         if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
             checkMatch[i].classList.add("show");
