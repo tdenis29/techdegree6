@@ -52,8 +52,7 @@ const checkLetter = buttonClicked => {
         if ( checkLetter[i].textContent.toLowerCase() == buttonClicked.textContent.toLowerCase()) {
             checkLetter[i].classList.add("show");   
             letterFound = button.target.textContent.toLowerCase();
-         } else {   
-        } return letterFound 
+         }  return letterFound 
     }                         //return match after loop 
 }  
 
@@ -69,9 +68,7 @@ const checkLetter = buttonClicked => {
 //         if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
 //             checkMatch[i].classList.add("show");
 //             letterFound = button.target.textContent.toLowerCase(); 
-//         } else {
-            
-//         }
+//         } 
 //     }  return letterFound
        
 // });
