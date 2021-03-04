@@ -95,9 +95,11 @@ button {
 .show {
   color: #000;
   background-color: #76CE82;
-  
 }
+.showtime {
+transition: var(--transition);
 
+}
 /* Keyboard */
 
 .keyrow {

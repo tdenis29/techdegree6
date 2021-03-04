@@ -52,14 +52,26 @@ const checkWin = () => {
      endScreen.classList.add("win");
      header.innerHTML = "YOU WON";
      overlay.style.display = "flex";
-     startButton.style.display = "block"
+     
     }  else if ( score > 4) {
         endScreen.classList.remove('start');
         endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
         overlay.style.display = "flex";
-        // startButton.style.display = "block"
+        resetLoseButton();
     }};
+    function resetLoseButton () {
+        endScreen = document.querySelector(".main-container");
+        resetLoseBtnDiv = createElement("div");
+        resetLoseBtn = createElement("button")
+        resetLoseBtnText = createTextNode("TRY AGAIN?");
+        resetLoseBtn.appendChild(resetLoseBtnText);
+        duocument.body.appendChild(resetLoseBtnDiv)
+       
+    }
+
+
+
 
 qwerty.addEventListener('click', (button) => {
     if (button.target.nodeName === "BUTTON"){
@@ -72,7 +84,9 @@ qwerty.addEventListener('click', (button) => {
         if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
             checkMatch[i].classList.add("show");
             letterFound = button.target.textContent.toLowerCase(); 
-        } 
+        } if ((button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase())) {
+            checkMatch[i].classList.add("showtime");
+        }
     }  
   } if (letterFound === null) {
     lives[score].src= "images/lostHeart.png";
