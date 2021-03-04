@@ -2,7 +2,7 @@
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
 const startButton = document.querySelector("a");          //reset/start the game 
-let score = 0;                                                //score
+let score = -1;                                                //score
 
 const phraseArr = [ 
     "Ba Ram You",
@@ -60,6 +60,7 @@ qwerty.addEventListener('click', (button) => {
     if (button.target.nodeName === "BUTTON"){
     button.target.className = "chosen";
     button.target.disabled = true;
+    lives = document.querySelectorAll('.tries img');
     checkMatch = document.querySelectorAll(".letter");
     letterFound = null;
     for (let i = 0; i < checkMatch.length; i++) {
@@ -69,8 +70,8 @@ qwerty.addEventListener('click', (button) => {
         } 
     }  
 }    if (letterFound === null) {
-
     score++
+    lives[score].src= "images/lostHeart.png";
 }   checkWin();
 });
 
