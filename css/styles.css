@@ -121,7 +121,15 @@ transition: var(--transition);
   border-radius: 5px;
   font-size: var(--font-size-medium);
 }
+.btn_lose {
+  padding: 8px;
+  margin: 50px auto;
+  background: #d80000;
+  border-radius: 5px;
+  font-size: var(--font-size-medium);
+  display: flex;
 
+}
 /* Overlay */
 
 #overlay {

@@ -1,7 +1,8 @@
 // Global Variables 
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
-const startButton = document.querySelector("a");          //reset/start the game 
+const startButton = document.querySelector("a"); 
+         //reset/start the game 
 let score = 0;                                                //score
 
 const phraseArr = [ 
@@ -58,20 +59,29 @@ const checkWin = () => {
         endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
         overlay.style.display = "flex";
-        resetLoseButton();
+        // resetLoseButton();
     }};
-    function resetLoseButton () {
-        endScreen = document.querySelector(".main-container");
-        resetLoseBtnDiv = createElement("div");
-        resetLoseBtn = createElement("button")
-        resetLoseBtnText = createTextNode("TRY AGAIN?");
-        resetLoseBtn.appendChild(resetLoseBtnText);
-        duocument.body.appendChild(resetLoseBtnDiv)
-       
-    }
+    // function resetLoseButton () {
+    //     endScreen = document.querySelector(".main-container");
+    //     resetLoseBtnDiv = document.createElement("div");
+    //     resetLoseBtn = document.createElement("BUTTON")
+    //     resetLoseBtnText = document.createTextNode("TRY AGAIN?");
+    //     resetLoseBtn.appendChild(resetLoseBtnText);
+    //     document.body.insertBefore(resetLoseBtnDiv, null);
+    //     resetLoseBtnDiv.appendChild(resetLoseBtn);
+    //     resetLoseBtnDiv.classList.add("btn_lose");
+    //     resetLoseBtn.addEventListener("click", () => {                                //activate 
+    //         endScreen.classList.remove('lose');
+    //         endScreen.classList.add("start");
+    //         overlay.classList.add("start");
+    //         resetLoseBtn.style.display = "none"
+    //         resetLoseBtnDiv.style.display = "none"
+    //         overlay.style.display = "intital";
+    //         startButton.style.display = "block"                                   // hide on click
+    //         });
+    // }
 
-
-
+    
 
 qwerty.addEventListener('click', (button) => {
     if (button.target.nodeName === "BUTTON"){
@@ -98,23 +108,8 @@ qwerty.addEventListener('click', (button) => {
 getRandomPhraseArray(phraseArr);
 addPhraseToDisplay(letters);
 
- 
 
 
 
-// const checkLetter = buttonClicked => { 
-//     let checkLetter = document.querySelectorAll(".letter");
-//      letterFound = null;
-//     for (let i = 0; i < checkLetter[i].length; i++) {
-//         if ( checkLetter[i].textContent.toLowerCase() == buttonClicked.textContent.toLowerCase()) {
-//             checkLetter[i].classList.add("show");   
-//             letterFound = buttonClicked.textContent.toLowerCase();
-//          }  return letterFound 
-//     }                         
-// }; 
-// qwerty.addEventListener('click', (event) => {
-//     buttonClicked = event.target;
-//     if (buttonClicked.nodeName == "BUTTON") {
-//     checkLetter(buttonClicked);
-//     buttonClicked.className = "chosen";
-//   }});
+
+
