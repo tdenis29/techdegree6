@@ -44,7 +44,7 @@ function addPhraseToDisplay(letters) {
 //check if game has been won or lost step 6 call at the end of event handler so it runs everytime a letter is clicked
 const checkWin = () => {
     header = document.querySelector("div, .header")
-    if (checkMatch.classList.contains("letter").length == checkMatch.classList.contains("show").length) {
+    if (checkMatch.classList.contains("letter").length == checkMatch.classList.contains("show").length) {   //help here 
      overlay.className = "win";
      header.innerHTML = "YOU WON";
      overlay.style.display = "flex";
