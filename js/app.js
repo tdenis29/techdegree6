@@ -2,7 +2,7 @@
 const keyBoard = document.getElementById('qwerty');       //Keys user selects
 const phrase = document.getElementById('phrase');          //random phrase to guess
 const startButton = document.querySelector("a");          //reset/start the game 
-let score = -1;                                                //score
+let score = 0;                                                //score
 
 const phraseArr = [ 
     "Ba Ram You",
@@ -43,17 +43,22 @@ function addPhraseToDisplay(letters) {
 }
 //check if game has been won or lost step 6 call at the end of event handler so it runs everytime a letter is clicked
 const checkWin = () => {
-     letterList = document.querySelectorAll('.letter');
-     showList = document.querySelectorAll('.show');
+    letterList = document.querySelectorAll('.letter');
+    showList = document.querySelectorAll('.show');
     header = document.querySelector("div, .header")
-    if (showList.length === letterList.length) {   //help here 
-     overlay.className = "win";
+    endScreen = document.querySelector(".main-container");
+    if (showList.length === letterList.length) {  
+     endScreen.classList.remove('start');
+     endScreen.classList.add("win");
      header.innerHTML = "YOU WON";
      overlay.style.display = "flex";
+     startButton.style.display = "block"
     }  else if ( score > 4) {
-        overlay.className = "lose"
+        endScreen.classList.remove('start');
+        endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
         overlay.style.display = "flex";
+        startButton.style.display = "block"
     }};
 
 qwerty.addEventListener('click', (button) => {
@@ -70,9 +75,10 @@ qwerty.addEventListener('click', (button) => {
         } 
     }  
 }    if (letterFound === null) {
+    checkWin()
     score++
     lives[score].src= "images/lostHeart.png";
-}   checkWin();
+} 
 });
 
 getRandomPhraseArray(phraseArr);
