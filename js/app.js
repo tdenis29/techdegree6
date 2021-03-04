@@ -41,11 +41,42 @@ function addPhraseToDisplay(letters) {
         }
     }
 }
+//check if game has been won or lost step 6 call at the end of event handler so it runs everytime a letter is clicked
+const checkWin = () => {
+    header = document.querySelector("div, .header")
+    if (checkMatch.classList.contains("letter").length == checkMatch.classList.contains("show").length) {
+     overlay.className = "win";
+     header.innerHTML = "YOU WON";
+     overlay.style.display = "flex";
+    }  else if ( score > 4) {
+        overlay.className = "lose"
+        header.innerHTML = "YOU LOSE HAHA"
+        overlay.style.display = "flex";
+    }};
 
-//Here i tried to factor out the checkLetter function after i accidnetly wrote it in the event handler.
-//In the event handler i have buttonClicked = event.target to try and pass it too checkLetter as a parameter, 
-// but it doesnt quite work.
+qwerty.addEventListener('click', (button) => {
+    if (button.target.nodeName === "BUTTON"){
+    button.target.className = "chosen";
+    button.target.disabled = true;
+    checkMatch = document.querySelectorAll(".letter");
+    letterFound = null;
+    for (let i = 0; i < checkMatch.length; i++) {
+        if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
+            checkMatch[i].classList.add("show");
+            letterFound = button.target.textContent.toLowerCase(); 
+        } 
+    }  
+}    if (letterFound === null) {
+    score++
+}   checkWin();
+});
+
+getRandomPhraseArray(phraseArr);
+addPhraseToDisplay(letters);
+
  
+
+
 
 // const checkLetter = buttonClicked => { 
 //     let checkLetter = document.querySelectorAll(".letter");
@@ -53,58 +84,14 @@ function addPhraseToDisplay(letters) {
 //     for (let i = 0; i < checkLetter[i].length; i++) {
 //         if ( checkLetter[i].textContent.toLowerCase() == buttonClicked.textContent.toLowerCase()) {
 //             checkLetter[i].classList.add("show");   
-//             letterFound = button.target.textContent.toLowerCase();
+//             letterFound = buttonClicked.textContent.toLowerCase();
 //          }  return letterFound 
 //     }                         
-// };  
-
-
-
+// }; 
 // qwerty.addEventListener('click', (event) => {
-    // if (buttonClicke.classList.contains("letter")) {
+    
 //     buttonClicked = event.target;
+//     if (buttonClicked.nodeName == "BUTTON") {
 //     checkLetter(buttonClicked);
 //     buttonClicked.className = "chosen";
 //   }});
-
-// i need help with the function parameters for checkLetter! it works when i wrote checkLetter in the event handler... 
-//This is my original code that kinda works im stuck on the conditional to filter out clicks anywhere else on the keyboard
-// im tryiing classList contains so only buttons with .letter can be clicked 
-//but i feel like theres a something somthing === "BUTTON"
-qwerty.addEventListener('click', (button) => {
-    // if (button.target.classList.contains(".letter")){
-    button.target.className = "chosen";
-    checkMatch = document.querySelectorAll(".letter");
-    letterFound = null;
-    for (let i = 0; i < checkMatch.length; i++) {
-        if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
-            checkMatch[i].classList.add("show");
-            letterFound = button.target.textContent.toLowerCase(); 
-        } else {
-            
-        }
-    }  return letterFound
-       
-});
-//at some point checkWin will be wrote and added here 
-getRandomPhraseArray(phraseArr);
-addPhraseToDisplay(letters);
-
- 
-
-
-//I HAVENT RAN THIS YET ITS PROBABLY VERY WRONG
-//check if game has been won or lost step 6 call at the end of event handler so it runs everytime a letter is clicked
-const checkWin = () => {
-// let header = document.getElementById("header");
-// if (letterGuessed.length === letterBox.length) {
-//  overlay.className = "win";
-//  header.innerHTML = "YOU WON";
-//  overlay.style.display = "flex";
-// }  else if ( score = 5) {
-//     overlay.className = "lose"
-//     header.innerHTML = "YOU LOSE HAHA"
-//     overlay.style.display = "flex";
-// }
-}
-
