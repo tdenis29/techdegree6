@@ -41,45 +41,63 @@ function addPhraseToDisplay(letters) {
         }
     }
 }
-//NEED HELP HERE call back for checkLettewr is at bottom of file
-// listen for keyboard clicks and compare input to li step 5
 
-const checkLetter = button => { //the parameter should be something else ?
-    button.target.className = "chosen";
+ //This code dont work right after i tried to factor it out of the event handler, 
+ 
+
+const checkLetter = buttonClicked => { 
     let checkLetter = document.querySelectorAll(".letter");
-    let match;//intialize match 
-    for (let i = 0; i < checkLetter.length; i++) {
-        if (button.target.textContent.toLowerCase() === checkLetter[i].textContent.toLowerCase()) {//loop through li until button target is found
-            checkLetter[i].classList.add("show");  //add show to matches so they appear on gameboard
-            match += button.textContent; //update match variable with button text value
-            console.log(match) //debug
-        } else {
-            score += 1;//score counter
-            console.log(score)
-            console.log('lose life')// debug
-            return score // return falsey so score doesnt run up for each item in collection that doesnt match
-        }
-    } return match                        //return match after loop 
+     match = null;
+    for (let i = 0; i < checkLetter[i].length; i++) {
+        if ( checkLetter[i].textContent.toLowerCase() == buttonClicked.textContent.toLowerCase()) {
+            checkLetter[i].classList.add("show");   
+            letterFound = button.target.textContent.toLowerCase();
+         } else {   
+        } return letterFound 
+    }                         //return match after loop 
 }  
 
-//Check letter kinda works but the loop only logs one match out of mutiple or not at all in the case of A
 
+// i need help with the function parameters for checkLetter! it works when i wrote checkLetter in the event handler 
+//i read the instructions wrong and and im stuck with this semi working code below
+//
+// qwerty.addEventListener('click', (button) => {
+//     button.target.className = "chosen";
+//     checkMatch = document.querySelectorAll(".letter");
+//     match = null;
+//     for (let i = 0; i < checkMatch.length; i++) {
+//         if (button.target.textContent.toLowerCase() === checkMatch[i].textContent.toLowerCase()) {
+//             checkMatch[i].classList.add("show");
+//             letterFound = button.target.textContent.toLowerCase(); 
+//         } else {
+            
+//         }
+//     }  return letterFound
+       
+// });
+getRandomPhraseArray(phraseArr);
+addPhraseToDisplay(letters);
+ 
+qwerty.addEventListener('click', (event) => {
+    buttonClicked = event.target;
+    checkLetter(buttonClicked);
+    buttonClicked.className = "chosen";
+  });
+
+
+
+//I HAVENT RAN THIS YET ITS PROBABLY VERY WRONG
 //check if game has been won or lost step 6
 const checkWin = () => {
-let header = document.getElementById("header");
-if (letterGuessed.length === letterBox.length) {
- overlay.className = "win";
- header.innerHTML = "YOU WON";
- overlay.style.display = "flex";
-}  else if ( score = 0) {
-    overlay.className = "lose"
-    header.innerHTML = "YOU LOSE HAHA"
-    overlay.style.display = "flex";
-}
+// let header = document.getElementById("header");
+// if (letterGuessed.length === letterBox.length) {
+//  overlay.className = "win";
+//  header.innerHTML = "YOU WON";
+//  overlay.style.display = "flex";
+// }  else if ( score = 0) {
+//     overlay.className = "lose"
+//     header.innerHTML = "YOU LOSE HAHA"
+//     overlay.style.display = "flex";
+// }
 }
 
-getRandomPhraseArray(phraseArr);
-addPhraseToDisplay(letters)
-qwerty.addEventListener('click', (button) => {
-    checkLetter(button)
-  });
