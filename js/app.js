@@ -58,7 +58,7 @@ const checkWin = () => {
         endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
         overlay.style.display = "flex";
-        startButton.style.display = "block"
+        // startButton.style.display = "block"
     }};
 
 qwerty.addEventListener('click', (button) => {
@@ -74,11 +74,11 @@ qwerty.addEventListener('click', (button) => {
             letterFound = button.target.textContent.toLowerCase(); 
         } 
     }  
-}    if (letterFound === null) {
-    checkWin()
-    score++
+  } if (letterFound === null) {
     lives[score].src= "images/lostHeart.png";
-} 
+    score++;
+}
+ checkWin(); 
 });
 
 getRandomPhraseArray(phraseArr);
@@ -90,7 +90,7 @@ addPhraseToDisplay(letters);
 
 // const checkLetter = buttonClicked => { 
 //     let checkLetter = document.querySelectorAll(".letter");
-//      match = null;
+//      letterFound = null;
 //     for (let i = 0; i < checkLetter[i].length; i++) {
 //         if ( checkLetter[i].textContent.toLowerCase() == buttonClicked.textContent.toLowerCase()) {
 //             checkLetter[i].classList.add("show");   
@@ -99,7 +99,6 @@ addPhraseToDisplay(letters);
 //     }                         
 // }; 
 // qwerty.addEventListener('click', (event) => {
-    
 //     buttonClicked = event.target;
 //     if (buttonClicked.nodeName == "BUTTON") {
 //     checkLetter(buttonClicked);
