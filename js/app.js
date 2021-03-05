@@ -49,14 +49,14 @@ const checkWin = () => {
     header = document.querySelector("div, .header")
     endScreen = document.querySelector(".main-container");
     if (showList.length === letterList.length) {  
-     endScreen.classList.remove('start');
-     endScreen.classList.add("win");
+    //  endScreen.classList.remove('start');
+    //  endScreen.classList.add("win");
      header.innerHTML = "YOU WON";
      overlay.style.display = "none";
      
     }  else if ( score > 4) {
-        endScreen.classList.remove('start');    //should this work as overlay.classList?
-        endScreen.classList.add("lose");
+        // endScreen.classList.remove('start');    //should this work as overlay.classList?
+        // endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
         overlay.style.display = "none";
         // resetLoseButton();
