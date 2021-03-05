@@ -52,13 +52,13 @@ const checkWin = () => {
      endScreen.classList.remove('start');
      endScreen.classList.add("win");
      header.innerHTML = "YOU WON";
-     overlay.style.display = "flex";
+     overlay.style.display = "none";
      
     }  else if ( score > 4) {
         endScreen.classList.remove('start');
         endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
-        overlay.style.display = "flex";
+        overlay.style.display = "none";
         // resetLoseButton();
     }};
     // function resetLoseButton () {
