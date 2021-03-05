@@ -1,9 +1,8 @@
-// Global Variables 
-const keyBoard = document.getElementById('qwerty');       //Keys user selects
-const phrase = document.getElementById('phrase');          //random phrase to guess
-const startButton = document.querySelector("a"); 
-         //reset/start the game 
-let score = 0;                                                //score
+
+const keyBoard = document.getElementById('qwerty');       
+const phrase = document.getElementById('phrase');          
+const startButton = document.querySelector("a");        
+let score = 0;                                                
 
 const phraseArr = [ 
     "Ba Ram You",
@@ -12,8 +11,8 @@ const phraseArr = [
     "One Ring to rule them all",
     "Buy the ticket take the ride"
 ]
-//listen for start button to fire step 1
-startButton.addEventListener("click", () => {                                //activate 
+
+startButton.addEventListener("click", () => {                                 
     if (startButton.textContent == "Success"){
      score = 0;
      let imgReset = document.querySelectorAll('.tries img');
@@ -53,25 +52,22 @@ startButton.addEventListener("click", () => {                                //a
         addPhraseToDisplay(letters);
         
     } else {
-        overlay = document.getElementById('overlay');                          //grab overlay
+        overlay = document.getElementById('overlay');                          
         overlay.style.display = "none" 
         getRandomPhraseArray(phraseArr);
         addPhraseToDisplay(letters)
     }});
 //return random phrase from array step 2
 const getRandomPhraseArray = phraseArr => {
-    randomKey = Math.floor(Math.random() * 5);//random number between 1-5
-    randomPhrase = phraseArr[randomKey];   //selects phrase from array using key
-    letters = [...randomPhrase]            //turn phrase into array of characters
+    randomKey = Math.floor(Math.random() * 5);
+    randomPhrase = phraseArr[randomKey];  
+    letters = [...randomPhrase]            
 
                
 };
-
-
-// add the letters of a string to the display step 3
 function addPhraseToDisplay(letters) {                     
     for (let i = 0; i < letters.length; i++) {   
-       let ul = document.getElementById("letterboxes")              //loop through array
+       let ul = document.getElementById("letterboxes")              
        letterBox = document.createElement('li');
        letterBoxText = document.createTextNode(letters[i]);
        letterBox.appendChild(letterBoxText);
@@ -83,7 +79,6 @@ function addPhraseToDisplay(letters) {
         }
     }
 }
-//check if game has been won or lost step 6 call at the end of event handler so it runs everytime a letter is clicked
 const checkWin = () => {
     letterList = document.querySelectorAll('.letter');
     showList = document.querySelectorAll('.show');
@@ -101,9 +96,6 @@ const checkWin = () => {
         overlay.style.display = "flex";
         startButton.textContent = "Failure"
     }};
-   
-    
-
 qwerty.addEventListener('click', (button) => {
     if (button.target.nodeName === "BUTTON"){
     button.target.className = "chosen";
