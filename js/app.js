@@ -55,7 +55,7 @@ const checkWin = () => {
      overlay.style.display = "none";
      
     }  else if ( score > 4) {
-        endScreen.classList.remove('start');
+        endScreen.classList.remove('start');    //should this work as overlay.classList?
         endScreen.classList.add("lose");
         header.innerHTML = "YOU LOSE HAHA"
         overlay.style.display = "none";
