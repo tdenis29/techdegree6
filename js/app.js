@@ -27,9 +27,12 @@ startButton.addEventListener("click", () => {                                //a
        button.removeAttribute('disabled');
        button.classList.remove('chosen');
      });
+     overlay.style.display = 'none';
+     overlay.classList.remove('win');    
+     overlay.classList.add("start");
      phraseArray = getRandomPhraseArray(phraseArr);
      addPhraseToDisplay(letters);
-     overlay.style.display = 'none';
+     
     } else if (startButton.textContent == "Failure"){
         score = 0;
         let imgReset = document.querySelectorAll('.tries img');
@@ -43,9 +46,12 @@ startButton.addEventListener("click", () => {                                //a
           button.removeAttribute('disabled');
           button.classList.remove('chosen');
         });
+        overlay.style.display = 'none';
+        overlay.classList.remove('lose');    
+        overlay.classList.add("start");
         getRandomPhraseArray(phraseArr);
         addPhraseToDisplay(letters);
-        overlay.style.display = 'none';
+        
     } else {
         overlay = document.getElementById('overlay');                          //grab overlay
         overlay.style.display = "none" 
