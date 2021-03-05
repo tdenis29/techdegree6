@@ -23,8 +23,8 @@ startButton.addEventListener("click", () => {
      ul.innerHTML = '';
      qwertyButtons = qwerty.querySelectorAll('button');
      qwertyButtons.forEach(button => {
-       button.removeAttribute('disabled');
-       button.classList.remove('chosen');
+     button.removeAttribute('disabled');
+     button.classList.remove('chosen');
      });
      overlay.style.display = 'none';
      overlay.classList.remove('win');    
@@ -57,13 +57,10 @@ startButton.addEventListener("click", () => {
         getRandomPhraseArray(phraseArr);
         addPhraseToDisplay(letters)
     }});
-//return random phrase from array step 2
 const getRandomPhraseArray = phraseArr => {
     randomKey = Math.floor(Math.random() * 5);
     randomPhrase = phraseArr[randomKey];  
-    letters = [...randomPhrase]            
-
-               
+    letters = [...randomPhrase]                         
 };
 function addPhraseToDisplay(letters) {                     
     for (let i = 0; i < letters.length; i++) {   
@@ -97,6 +94,7 @@ const checkWin = () => {
         startButton.textContent = "Failure"
     }};
 qwerty.addEventListener('click', (button) => {
+     button.stopPropagation();
     if (button.target.nodeName === "BUTTON"){
     button.target.className = "chosen";
     button.target.disabled = true;
