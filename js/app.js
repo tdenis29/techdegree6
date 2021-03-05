@@ -14,16 +14,51 @@ const phraseArr = [
 ]
 //listen for start button to fire step 1
 startButton.addEventListener("click", () => {                                //activate 
-    overlay = document.getElementById('overlay');                          //grab overlay
-    overlay.style.display = "none"                                               // hide on click
-    });
-
+    if (startButton.textContent == "Success"){
+     score = 0;
+     let imgReset = document.querySelectorAll('.tries img');
+     imgReset.forEach(imgReset => {
+     imgReset.src = 'images/liveHeart.png';
+     });
+     const ul = document.querySelector('ul');
+     ul.innerHTML = '';
+     qwertyButtons = qwerty.querySelectorAll('button');
+     qwertyButtons.forEach(button => {
+       button.removeAttribute('disabled');
+       button.classList.remove('chosen');
+     });
+     phraseArray = getRandomPhraseArray(phraseArr);
+     addPhraseToDisplay(letters);
+     overlay.style.display = 'none';
+    } else if (startButton.textContent == "Failure"){
+        score = 0;
+        let imgReset = document.querySelectorAll('.tries img');
+        imgReset.forEach(imgReset => {
+        imgReset.src = 'images/liveHeart.png';
+        });
+        const ul = document.querySelector('ul');
+        ul.innerHTML = '';
+        qwertyButtons = qwerty.querySelectorAll('button');
+        qwertyButtons.forEach(button => {
+          button.removeAttribute('disabled');
+          button.classList.remove('chosen');
+        });
+        getRandomPhraseArray(phraseArr);
+        addPhraseToDisplay(letters);
+        overlay.style.display = 'none';
+    } else {
+        overlay = document.getElementById('overlay');                          //grab overlay
+        overlay.style.display = "none" 
+        getRandomPhraseArray(phraseArr);
+        addPhraseToDisplay(letters)
+    }});
 //return random phrase from array step 2
 const getRandomPhraseArray = phraseArr => {
     randomKey = Math.floor(Math.random() * 5);//random number between 1-5
     randomPhrase = phraseArr[randomKey];   //selects phrase from array using key
     letters = [...randomPhrase]            //turn phrase into array of characters
-    return letters;                  
+
+               
 };
 
 
@@ -46,41 +81,21 @@ function addPhraseToDisplay(letters) {
 const checkWin = () => {
     letterList = document.querySelectorAll('.letter');
     showList = document.querySelectorAll('.show');
-    header = document.querySelector("div, .header")
-    endScreen = document.querySelector(".main-container");
+    header = document.querySelector("#banner, h2")
     if (showList.length === letterList.length) {  
-    //  endScreen.classList.remove('start');
-    //  endScreen.classList.add("win");
-     header.innerHTML = "YOU WON";
-     overlay.style.display = "none";
-     
+     overlay.classList.remove('start');
+     overlay.classList.add("win");
+     header.textContent = "YOU WON";
+     overlay.style.display = "flex";
+     startButton.textContent = "Success"
     }  else if ( score > 4) {
-        // endScreen.classList.remove('start');    //should this work as overlay.classList?
-        // endScreen.classList.add("lose");
-        header.innerHTML = "YOU LOSE HAHA"
-        overlay.style.display = "none";
-        // resetLoseButton();
+        overlay.classList.remove('start');    
+        overlay.classList.add("lose");
+        header.textContent = "YOU LOSE HAHA"
+        overlay.style.display = "flex";
+        startButton.textContent = "Failure"
     }};
-    // function resetLoseButton () {
-    //     endScreen = document.querySelector(".main-container");
-    //     resetLoseBtnDiv = document.createElement("div");
-    //     resetLoseBtn = document.createElement("BUTTON")
-    //     resetLoseBtnText = document.createTextNode("TRY AGAIN?");
-    //     resetLoseBtn.appendChild(resetLoseBtnText);
-    //     document.body.insertBefore(resetLoseBtnDiv, null);
-    //     resetLoseBtnDiv.appendChild(resetLoseBtn);
-    //     resetLoseBtnDiv.classList.add("btn_lose");
-    //     resetLoseBtn.addEventListener("click", () => {                                //activate 
-    //         endScreen.classList.remove('lose');
-    //         endScreen.classList.add("start");
-    //         overlay.classList.add("start");
-    //         resetLoseBtn.style.display = "none"
-    //         resetLoseBtnDiv.style.display = "none"
-    //         overlay.style.display = "intital";
-    //         startButton.style.display = "block"                                   // hide on click
-    //         });
-    // }
-
+   
     
 
 qwerty.addEventListener('click', (button) => {
@@ -104,9 +119,6 @@ qwerty.addEventListener('click', (button) => {
 }
  checkWin(); 
 });
-
-getRandomPhraseArray(phraseArr);
-addPhraseToDisplay(letters);
 
 
 
